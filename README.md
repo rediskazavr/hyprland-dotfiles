@@ -1,2 +1,2 @@
 # hyprland-dotfiles
-hyprland-dotfiles in orange-black colors
+hyprland-dotfiles in orange
