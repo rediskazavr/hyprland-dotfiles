@@ -1,20 +1,28 @@
 #!/bin/bash
-#update system/install packages for system
-sudo pacman -Syu --needed --noconfirm
-sudo pacman -S git base base-devel qt5-wayland dunst qt6-wayland xdg-desktop-portal-hyprland grim polkit-kde-agent slurp neovim fastfetch cava cmatrix maim firefox btop ncmpcpp lf zsh ttf-font-awesome ttf-jetbrains-mono ttf-jetbrains-mono-nerd ly foot --needed --noconfirm
 
-#install yay
-cd ~/hyprland-dotfiles/yay/
-makepkg -si --noconfirm
+#======================
+#dofiles by rediskazavr
+#======================
+
+#update system
+sudo pacman -Syu --noconfirm
 
 #install hyprland
-yay -Syu --noconfirm
-yay -S hyprland hyprpaper hyprlock waybar --noconfirm
+sudo pacman -S qt5-wayland qt6-wayland xdg-desktop-portal-hyprland polkit-kde-agent hyprland hyprpaper waybar hyprcursor wofi maim lf ly foot fastfetch cava cmatrix lolcat figlet neovim git firefox btop zsh ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-font-awesome  --noconfirm
 
+#copy dotfiles
+mkdir -r ~/.config/
+cp -r ~/hyprland-dotfiles/dotfiles/wallpapers ~/.config/
 
-#copy dotfiles in ~/.config
-# mkdir -p ~/.config/
-# cp -r ... ~/.config/
+#install yay
+mkdir ~/deletemepls/
+cd ~/deletemepls
+git clone https://aur.archlinux.org/yay
+cd yay
+makepkg -si --noconfirm
+
+#install tty-clock
+yay -S tty-clock
 
 #reboot
 sudo reboot
